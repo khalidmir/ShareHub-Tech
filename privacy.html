@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy & Terms | ShareHub Technologies LLC</title>
+    
+    <!-- SEO Metadata -->
+    <meta name="description" content="Privacy Policy and Terms of Service for ShareHub Technologies LLC. US-based IT and Tech Services.">
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%231e3a8a%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22%23ff8c00%22/><path d=%22M50 20 L50 35 M50 65 L50 80 M20 50 L35 50 M65 50 L80 50%22 stroke=%22white%22 stroke-width=%225%22/></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #080c1a; 
+            --blue: #1e3a8a;
+            --accent: #e8505b;
+            --orange-icon: #ff8c00;
+            --light-bg: #f8f9fc;
+            --white: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --border: #e5e7eb;
+            --gold: #FFD700;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Base Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navigation (Same as index) */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            height: 90px;
+        }
+        .logo {
+            text-decoration: none; display: flex; align-items: center; gap: 14px;
+        }
+        .logo svg { width: 48px; height: 48px; }
+        .logo-text-wrapper {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            text-align: center;
+        }
+        .brand-name {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--blue);
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+        .brand-sub {
+            font-size: 9.5px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            margin-top: 3px;
+        }
+        
+        .nav-links { display: flex; list-style: none; gap: 32px; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-muted);
+            font-weight: 600; font-size: 14px; transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--blue); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            font-size: 15px;
+        }
+        .btn-primary { background: var(--accent); color: white; }
+
+        /* Legal Content Styling */
+        .legal-hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+            color: white; padding: 80px 0; text-align: center;
+        }
+        .legal-hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
+        
+        .legal-content { padding: 80px 0; }
+        .legal-box {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 60px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+        .legal-section { margin-bottom: 50px; }
+        .legal-section:last-child { margin-bottom: 0; }
+        .legal-section h2 { 
+            font-size: 1.8rem; 
+            color: var(--blue); 
+            margin-bottom: 24px; 
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 10px;
+        }
+        .legal-section h3 { font-size: 1.2rem; color: var(--navy); margin: 20px 0 10px; }
+        .legal-section p { margin-bottom: 15px; color: var(--text-muted); }
+        .legal-section ul { margin-left: 20px; margin-bottom: 20px; color: var(--text-muted); }
+        .legal-section li { margin-bottom: 8px; }
+
+        /* Footer (Same as index) */
+        footer { 
+            background: var(--blue);
+            color: rgba(255, 255, 255, 0.7); 
+            padding: 80px 0 0; 
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 { color: white; margin-bottom: 24px; font-size: 16px; font-weight: 700; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+        .footer-links a:hover { color: white; }
+        
+        .copyright-bar {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .gold-link {
+            color: var(--gold) !important;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .legal-box { padding: 30px; }
+            .nav-links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .legal-hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="100" rx="18" fill="#1e3a8a"/>
+                        <circle cx="50" cy="50" r="14" fill="#ff8c00"/>
+                        <path d="M50 20V34M50 66V80M20 50H34M66 50H80" stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+                        <circle cx="50" cy="20" r="5" fill="white"/>
+                        <circle cx="50" cy="80" r="5" fill="white"/>
+                        <circle cx="20" cy="50" r="5" fill="white"/>
+                        <circle cx="80" cy="50" r="5" fill="white"/>
+                    </svg>
+                    <div class="logo-text-wrapper">
+                        <span class="brand-name">SHAREHUB</span>
+                        <span class="brand-sub">Technologies LLC</span>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <a href="index.html#contact" class="btn btn-primary" style="padding: 8px 20px; font-size: 14px;">Free Quote</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="legal-hero">
+            <div class="container">
+                <h1>Legal Information</h1>
+                <p>Effective Date: March 2026</p>
+            </div>
+        </section>
+
+        <section class="legal-content">
+            <div class="container">
+                <div class="legal-box">
+                    
+                    <!-- Privacy Policy -->
+                    <div class="legal-section" id="privacy">
+                        <h2>Privacy Policy</h2>
+                        <p>At ShareHub Technologies LLC, we are committed to protecting your privacy. This policy explains how we collect, use, and safeguard your personal information when you visit our website or use our IT services.</p>
+                        
+                        <h3>1. Information We Collect</h3>
+                        <p>We may collect personal information that you provide to us, including but not limited to:</p>
+                        <ul>
+                            <li>Name and Contact Information (Email, Phone Number).</li>
+                            <li>Company Details for Service Provisioning.</li>
+                            <li>IP Address and Browsing Data through cookies.</li>
+                        </ul>
+
+                        <h3>2. How We Use Information</h3>
+                        <p>Your data is used to provide and improve our services, communicate with you regarding inquiries, and fulfill our contractual obligations as a tech services provider.</p>
+                        
+                        <h3>3. Data Security</h3>
+                        <p>We implement industry-standard security measures, including encryption and secure servers, to protect your data from unauthorized access or disclosure.</p>
+                    </div>
+
+                    <!-- Terms of Service -->
+                    <div class="legal-section" id="terms">
+                        <h2>Terms of Service</h2>
+                        <p>By accessing or using the services provided by ShareHub Technologies LLC, you agree to be bound by the following terms and conditions.</p>
+                        
+                        <h3>1. Acceptance of Terms</h3>
+                        <p>These terms apply to all visitors, users, and clients of ShareHub Technologies LLC. Usage of our website or services constitutes acceptance of these terms.</p>
+
+                        <h3>2. Description of Services</h3>
+                        <p>ShareHub Technologies LLC provides Managed IT Support, Web Development, Cloud Consulting, and SEO services. The specific scope of work for clients is defined in separate Service Level Agreements (SLAs).</p>
+
+                        <h3>3. Intellectual Property</h3>
+                        <p>Unless otherwise stated, all content, code, and design elements on this website are the property of ShareHub Technologies LLC and are protected by copyright laws.</p>
+
+                        <h3>4. Limitation of Liability</h3>
+                        <p>ShareHub Technologies LLC shall not be liable for any indirect, incidental, or consequential damages resulting from the use or inability to use our services or website.</p>
+
+                        <h3>5. Governing Law</h3>
+                        <p>These terms shall be governed by and construed in accordance with the laws of the United States of America.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 24px;">
+                         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 48px; height: 48px;">
+                            <rect width="100" height="100" rx="18" fill="#ffffff"/>
+                            <circle cx="50" cy="50" r="14" fill="#ff8c00"/>
+                            <path d="M50 20V34M50 66V80M20 50H34M66 50H80" stroke="#1e3a8a" stroke-width="4.5" stroke-linecap="round"/>
+                            <circle cx="50" cy="20" r="5" fill="#1e3a8a"/>
+                            <circle cx="50" cy="80" r="5" fill="#1e3a8a"/>
+                            <circle cx="20" cy="50" r="5" fill="#1e3a8a"/>
+                            <circle cx="80" cy="50" r="5" fill="#1e3a8a"/>
+                        </svg>
+                        <div class="logo-text-wrapper" style="text-align: left;">
+                            <span class="brand-name" style="color: white; font-size: 24px;">SHAREHUB</span>
+                            <span class="brand-sub" style="color: rgba(255,255,255,0.6); font-size: 8.5px; letter-spacing: 1.4px;">Technologies LLC</span>
+                        </div>
+                    </a>
+                    <p>Leading US-based IT solutions provider delivering enterprise-grade managed services and web development.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Core Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#services">Managed IT Support</a></li>
+                        <li><a href="index.html#services">Web Development</a></li>
+                        <li><a href="index.html#services">Cloud Consulting</a></li>
+                        <li><a href="index.html#services">Growth SEO</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">About Our LLC</a></li>
+                        <li><a href="legal.html">Privacy & Terms</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col newsletter">
+                    <h4>Stay Ahead</h4>
+                    <p>Subscribe for the latest enterprise tech insights.</p>
+                </div>
+            </div>
+            <div class="copyright-bar">
+                <p>&copy; 2026 ShareHub Technologies LLC. Designed by <a href="https://kreativeminds.ae" target="_blank" class="gold-link">Kreative Minds</a></p>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none;">FB</a>
+                    <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none;">IG</a>
+                    <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none;">LI</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
