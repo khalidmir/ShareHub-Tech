@@ -59,8 +59,8 @@
             --text-muted: #4b5563;
             --border: #e5e7eb;
             --gold: #FFD700;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* Base Reset */
@@ -71,7 +71,22 @@
             color: var(--text-main);
             background-color: var(--white);
             line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-up { animation: fadeUp 0.8s ease-out forwards; }
 
         /* Utility Classes */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -140,55 +155,115 @@
         }
         .nav-links a:hover, .nav-links a.active { color: var(--blue); }
 
-        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--navy); }
 
-        /* Hero Section */
+        /* Hero Section - Optimized Responsive 70/30 */
         .hero {
             background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
             color: white; padding: 120px 0 160px; position: relative; overflow: hidden;
         }
-        .hero::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(circle at 20% 30%, rgba(30, 58, 138, 0.4) 0%, transparent 50%);
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            position: relative;
+            z-index: 2;
         }
-        .hero-content { max-width: 850px; position: relative; z-index: 2; }
+        .hero-content { flex: 0 0 70%; max-width: 70%; }
+        .hero-image {
+            flex: 0 0 30%;
+            max-width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: float 6s ease-in-out infinite;
+        }
+        .hero-image .img-frame {
+            background: rgba(255, 255, 255, 1);
+            padding: 12px;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+            transition: var(--transition);
+            width: 100%;
+        }
+        .hero-image .img-frame:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 45px 80px -20px rgba(0, 0, 0, 0.7);
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+            object-fit: cover;
+        }
         .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 24px; font-weight: 800; letter-spacing: -0.02em; }
-        .hero p { font-size: 1.25rem; opacity: 0.9; margin-bottom: 40px; max-width: 600px; }
+        .hero p { font-size: 1.25rem; opacity: 0.9; margin-bottom: 40px; }
 
         /* Stats Bar */
         .stats-container { margin-top: -80px; position: relative; z-index: 3; }
         .stats-bar {
             display: grid; grid-template-columns: repeat(3, 1fr);
             background: white; padding: 40px; border-radius: 16px;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             text-align: center;
         }
         .stat-item h3 { font-size: 2.5rem; color: var(--accent); font-weight: 800; margin-bottom: 4px; }
         .stat-item p { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
 
-        /* Services */
+        /* Services - 2x2 Animated Grid */
         .section-padding { padding: 100px 0; }
         .services-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         .service-card {
-            background: var(--white); padding: 40px; border-radius: 16px;
-            border: 1px solid var(--border); transition: var(--transition);
-            display: flex; flex-direction: column; gap: 16px;
+            background: var(--white); 
+            padding: 50px; 
+            border-radius: 20px;
+            border: 1px solid var(--border); 
+            transition: var(--transition);
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 0;
+            background: var(--orange-icon);
+            transition: var(--transition);
         }
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            border-color: var(--blue);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-color: rgba(30, 58, 138, 0.2);
         }
+        .service-card:hover::before { height: 100%; }
+        
         .service-icon {
-            width: 48px; height: 48px; background: var(--light-bg);
-            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            width: 64px; height: 64px; 
+            background: var(--light-bg);
+            border-radius: 14px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
             color: var(--blue);
+            transition: var(--transition);
         }
-        .service-card h3 { font-size: 1.15rem; color: var(--navy); font-weight: 700; }
-        .service-card p { color: var(--text-muted); font-size: 0.9rem; }
+        .service-card:hover .service-icon {
+            background: var(--blue);
+            color: white;
+            transform: rotate(10deg) scale(1.1);
+        }
+        .service-card h3 { font-size: 1.35rem; color: var(--navy); font-weight: 700; }
+        .service-card p { color: var(--text-muted); font-size: 1rem; }
 
         /* Footer */
         footer { 
@@ -206,13 +281,11 @@
         .footer-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: var(--transition); }
         .footer-links a:hover { color: white; padding-left: 4px; }
         
-        .newsletter p { margin-bottom: 16px; font-size: 14px; }
         .input-group { display: flex; gap: 8px; }
         .input-group input {
             padding: 12px 16px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.2);
             background: rgba(255, 255, 255, 0.05); color: white; flex-grow: 1; outline: none;
         }
-        .input-group input::placeholder { color: rgba(255, 255, 255, 0.4); }
 
         .copyright-bar {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -223,34 +296,39 @@
             flex-wrap: wrap;
             gap: 20px;
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.6);
         }
 
         .gold-link {
             color: var(--gold) !important;
             font-weight: 700;
             text-decoration: none;
-            transition: opacity 0.2s;
-        }
-        .gold-link:hover {
-            opacity: 0.8;
-            text-decoration: underline;
         }
 
-        /* Mobile Adjustments */
-        @media (max-width: 992px) {
+        /* Device Visibility & Breakpoints */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero-content { flex: 0 0 60%; max-width: 60%; }
+            .hero-image { flex: 0 0 35%; max-width: 35%; }
+        }
+
+        @media (max-width: 991px) {
+            .hero .container { flex-direction: column-reverse; text-align: center; padding-top: 40px; }
+            .hero-content { flex: 0 0 100%; max-width: 100%; }
+            .hero-image { flex: 0 0 100%; max-width: 380px; margin: 0 auto 40px; display: flex; }
+            .hero h1 { font-size: 2.5rem; }
+            .services-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
-            .hero h1 { font-size: 2.75rem; }
         }
 
         @media (max-width: 768px) {
+            nav { height: 70px; }
             .nav-links { display: none; }
             .mobile-toggle { display: block; }
-            .stats-bar { grid-template-columns: 1fr; gap: 30px; }
-            .hero { padding: 80px 0 120px; text-align: center; }
-            .hero-content { margin: 0 auto; }
-            .input-group { flex-direction: column; }
+            .stats-bar { grid-template-columns: 1fr; gap: 30px; padding: 30px; }
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .section-header h2 { font-size: 1.75rem; }
+            .hero { padding: 60px 0 120px; }
+            .hero h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -291,8 +369,9 @@
     </header>
 
     <main id="home">
+        <!-- Hero Section with SEO/Marketing Relevant Image Split -->
         <section class="hero">
-            <div class="container">
+            <div class="container animate-up">
                 <div class="hero-content">
                     <h1>Innovative IT Solutions & Managed Tech Services Experts</h1>
                     <p>ShareHub Technologies LLC delivers industry-leading IT Support, Custom Web Development, and Digital Infrastructure designed to scale your business in the global digital economy.</p>
@@ -301,10 +380,16 @@
                         <a href="#about" class="btn" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">Learn More</a>
                     </div>
                 </div>
+                <div class="hero-image">
+                    <div class="img-frame">
+                        <!-- High-Quality SEO/Marketing Relevant Image -->
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="SEO and Digital Marketing Analytics">
+                    </div>
+                </div>
             </div>
         </section>
 
-        <div class="container stats-container">
+        <div class="container stats-container animate-up" style="animation-delay: 0.2s;">
             <div class="stats-bar">
                 <div class="stat-item">
                     <h3>150+</h3>
@@ -323,13 +408,13 @@
 
         <section id="services" class="section-padding">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header animate-up">
                     <h2>IT & Managed Tech Services</h2>
                     <p>End-to-end technology solutions tailored for high-growth enterprises and digital native companies.</p>
                 </div>
                 
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card animate-up" style="animation-delay: 0.3s;">
                         <div class="service-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
                         </div>
@@ -337,7 +422,7 @@
                         <p>Complete infrastructure management, proactive monitoring, and enterprise-grade support to keep your operations running flawlessly.</p>
                     </div>
 
-                    <div class="service-card">
+                    <div class="service-card animate-up" style="animation-delay: 0.4s;">
                         <div class="service-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                         </div>
@@ -345,7 +430,7 @@
                         <p>Bespoke web applications and responsive platforms engineered for high performance, security, and seamless user experiences.</p>
                     </div>
 
-                    <div class="service-card">
+                    <div class="service-card animate-up" style="animation-delay: 0.5s;">
                         <div class="service-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                         </div>
@@ -353,7 +438,7 @@
                         <p>Cloud architecture, API integrations, and digital transformation consulting to ensure your business remains technically superior.</p>
                     </div>
 
-                    <div class="service-card">
+                    <div class="service-card animate-up" style="animation-delay: 0.6s;">
                         <div class="service-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                         </div>
@@ -382,7 +467,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="#" class="logo" style="margin-bottom: 24px;">
+                    <div class="logo" style="margin-bottom: 24px;">
                          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 48px; height: 48px;">
                             <rect width="100" height="100" rx="18" fill="#ffffff"/>
                             <circle cx="50" cy="50" r="14" fill="#ff8c00"/>
@@ -396,7 +481,7 @@
                             <span class="brand-name" style="color: white; font-size: 24px;">SHAREHUB</span>
                             <span class="brand-sub" style="color: rgba(255,255,255,0.6); font-size: 8.5px; letter-spacing: 1.4px;">Technologies LLC</span>
                         </div>
-                    </a>
+                    </div>
                     <p>Leading US-based IT solutions provider delivering enterprise-grade managed services and web development.</p>
                 </div>
                 <div class="footer-col">
@@ -434,6 +519,7 @@
     </footer>
 
     <script>
+        // Smooth Scroll Spy
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section, main');
             const navLinks = document.querySelectorAll('.nav-links a');
@@ -451,21 +537,34 @@
                 }
             });
         });
-        document.getElementById('menuBtn').addEventListener('click', () => {
-            const nav = document.querySelector('.nav-links');
-            if(nav.style.display === 'flex') {
-                nav.style.display = 'none';
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            if(navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
             } else {
-                nav.style.display = 'flex';
-                nav.style.flexDirection = 'column';
-                nav.style.position = 'absolute';
-                nav.style.top = '90px';
-                nav.style.left = '0';
-                nav.style.width = '100%';
-                nav.style.background = 'white';
-                nav.style.padding = '20px';
-                nav.style.boxShadow = '0 10px 10px rgba(0,0,0,0.1)';
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '90px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 10px 10px rgba(0,0,0,0.1)';
             }
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
